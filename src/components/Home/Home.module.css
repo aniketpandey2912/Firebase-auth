@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: lavender;
+  color: blue;
+  text-decoration: none;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome {
+  text-align: center;
+}
+
+.logoutBtn {
+  border: none;
+  border-radius: 10px;
+  background-color: blueviolet;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
