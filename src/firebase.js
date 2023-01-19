@@ -24,7 +24,7 @@ const googleAuthProvider = new GoogleAuthProvider();
 export const signInWithGoogle = () => {
   signInWithPopup(auth, googleAuthProvider)
     .then((res) => {
-      console.log("res:", res);
+      console.log("res:", res); // we can set user info to local storage to show user info in the app.
     })
     .catch((err) => {
       console.log("error:", err);
