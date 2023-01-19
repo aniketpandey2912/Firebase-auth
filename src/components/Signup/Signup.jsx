@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth, signInWithGoogle } from "../../firebase";
 
 import InputControl from "../InputControl/InputControl";
 import styles from "./Signup.module.css";
@@ -37,7 +37,7 @@ const Signup = () => {
         await updateProfile(res.user, { displayName: formData.name });
         setSubmitBtnDisabled(false);
         console.log(res);
-        alert("login success");
+        alert("signup success");
         setError("");
         navigate("/");
       })
@@ -80,6 +80,11 @@ const Signup = () => {
           <b className={styles.err}>{error}</b>
           <button disabled={submitBtnDisabled} onClick={handleSubmission}>
             SignUp
+          </button>
+
+          {/* google-auth */}
+          <button onClick={() => signInWithGoogle()}>
+            Sign in with google account
           </button>
           <p>
             Already have an account ?

@@ -31,12 +31,17 @@ const Home = () => {
         <Link to="/">
           <h1>Home</h1>
         </Link>
-        <Link to="/login">
-          <h1>Login</h1>
-        </Link>
-        <Link to="/signup">
-          <h1>Signup</h1>
-        </Link>
+        {!userName && (
+          <Link to="/login">
+            <h1>Login</h1>
+          </Link>
+        )}
+
+        {!userName && (
+          <Link to="/signup">
+            <h1>Signup</h1>
+          </Link>
+        )}
 
         {userName && (
           <button className={styles.logoutBtn} onClick={handleLogout}>
