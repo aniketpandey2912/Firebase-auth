@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth, signInWithFacebook, signInWithGoogle } from "../../firebase";
 
 import InputControl from "../InputControl/InputControl";
 import styles from "./Login.module.css";
@@ -66,6 +66,16 @@ const Login = () => {
           <b className={styles.err}>{error}</b>
           <button disabled={submitBtnDisabled} onClick={handleSubmission}>
             Login
+          </button>
+
+          {/* google-auth */}
+          <button onClick={() => signInWithGoogle()}>
+            Sign in with google account
+          </button>
+
+          {/* Facebook-auth */}
+          <button onClick={() => signInWithFacebook("login")}>
+            Sign in with Facebook account
           </button>
           <p>
             Don't have an account ?

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, signInWithGoogle } from "../../firebase";
+import { auth, signInWithFacebook, signInWithGoogle } from "../../firebase";
 
 import InputControl from "../InputControl/InputControl";
 import styles from "./Signup.module.css";
@@ -85,6 +85,11 @@ const Signup = () => {
           {/* google-auth */}
           <button onClick={() => signInWithGoogle()}>
             Sign in with google account
+          </button>
+
+          {/* Facebook-auth */}
+          <button onClick={() => signInWithFacebook("sign in")}>
+            Sign in with Facebook account
           </button>
           <p>
             Already have an account ?

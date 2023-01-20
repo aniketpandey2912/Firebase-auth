@@ -1,6 +1,11 @@
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  FacebookAuthProvider,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBVd9IGVPEQ2Gq1mHkeF_gDv5VBHzmaD70",
@@ -28,5 +33,34 @@ export const signInWithGoogle = () => {
     })
     .catch((err) => {
       console.log("error:", err);
+    });
+};
+
+// Facebook Auth
+const facebookAuthProvider = new FacebookAuthProvider();
+facebookAuthProvider.addScope("user_birthday");
+auth.useDeviceLanguage();
+facebookAuthProvider.setCustomParameters({
+  display: "popup",
+});
+export const signInWithFacebook = (authType) => {
+  signInWithPopup(auth, facebookAuthProvider)
+    .then((res) => {
+      const user = res.user;
+      const credentials = FacebookAuthProvider.credentialFromResult(res);
+      const acecessToken = credentials.accessToken;
+      console.log("user:", user);
+      console.log("user cred:", credentials);
+      console.log("access token:", acecessToken);
+      alert(`${authType} success through facebook`);
+    })
+    .catch((err) => {
+      const errCode = err.code;
+      const errMessage = err.message;
+      const credentials = FacebookAuthProvider.credentialFromError(err);
+      console.log("err code:", errCode);
+      console.log("err messg:", errMessage);
+      console.log("err cred:", credentials);
+      alert(err.message);
     });
 };
