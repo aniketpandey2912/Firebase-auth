@@ -2,7 +2,7 @@
 
 # Before you begin
 
-1. Add Firebase to your JavaScript project.
+1. Add Firebase to your project.
 2. On the Facebook for Developers site : https://developers.facebook.com/, get the App ID and an App Secret for your app : -
    - Click My apps tab
    - Create a new app (complete the process)
